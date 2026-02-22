@@ -19,9 +19,7 @@ done
 influxd_log_level=$(bashio::config 'influxd_log_level')
 bashio::log.info "influxd_log_level = ${influxd_log_level}"
 
-export INFLUXDB3_ENTERPRISE_LICENSE_EMAIL=erikhilton73@gmail.com
-
 bashio::log.info 'Starting InfluxDB v3.x...'
 
 # Run InfluxDB
-exec /usr/bin/influxdb3 serve --node-id=HA-node --cluster-id=CLUSTER_ID=HA-cluster --object-store=file --data-dir=/data/influxdb3/data
+exec /usr/bin/influxdb3 serve --node-id=HA-node --cluster-id=CLUSTER_ID=HA-cluster --object-store=file --data-dir=/data/influxdb3/data --license-email erikhilton73@gmail.com
