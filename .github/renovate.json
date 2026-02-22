@@ -24,7 +24,7 @@
         "ARG INFLUXDB_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
       ],
       "datasourceTemplate": "github-releases",
-      "versioningTemplate": "same-major",
+      "versioningTemplate": "loose",
       "depNameTemplate": "influxdata/influxdb"
     },
     {
