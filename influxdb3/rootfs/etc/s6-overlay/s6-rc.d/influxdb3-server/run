@@ -25,4 +25,4 @@ export INFLUXD_LOG_LEVEL=${influxd_log_level}
 bashio::log.info 'Starting InfluxDB v3.x...'
 
 # Run InfluxDB
-exec influxdb3 serve --node-id=HA-node --cluster-id=CLUSTER_ID=HA-cluster --object-store=file --data-dir=/data/influxdb3/data
+exec influxdb3 serve
