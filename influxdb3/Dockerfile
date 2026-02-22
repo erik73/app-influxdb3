@@ -23,7 +23,7 @@ RUN apk add --no-cache \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     && curl -fLO "https://dl.influxdata.com/influxdb/releases/influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
     && tar xzf "influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
-    && cp "influxdb3-enterprise-${INFLUXDB_VERSION}/influxb3" /usr/bin/influxd \
+    && cp "influxdb3-enterprise-${INFLUXDB_VERSION}/influxdb3" /usr/bin/influxd \
     && rm -rf "influxdb3-enterprise-${INFLUXDB_VERSION}.tar.gz" \
         "influxdb3-enterprise-${INFLUXDB_VERSION}"
 
