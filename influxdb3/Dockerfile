@@ -14,7 +14,7 @@ ARG BUILD_REPOSITORY
 ARG BUILD_VERSION
 
 # Setup base system
-ARG INFLUXDB_VERSION="2.8.0"
+ARG INFLUXDB_VERSION="3.4.0"
 
 RUN apk add --no-cache \
         nginx \
