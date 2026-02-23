@@ -16,7 +16,8 @@ ARG BUILD_VERSION
 # Setup base system
 ARG INFLUXDB_VERSION="3.4.0"
 
-RUN apk add --no-cache \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
         nginx \
     && ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
