@@ -18,7 +18,7 @@ ARG INFLUXDB_VERSION="3.4.0"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        nginx \
+        nginx=1.26.3-3+deb13u1 \
     && ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
