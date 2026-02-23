@@ -22,4 +22,4 @@ done
 bashio::log.info 'Starting InfluxDB v3.x...'
 
 # Run InfluxDB
-exec influxdb3 serve
+exec influxdb3 serve --plugin-dir /data/influx-plugins
