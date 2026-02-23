@@ -23,7 +23,7 @@ RUN apt-get update \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     && curl -fLO "https://dl.influxdata.com/influxdb/releases/influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
-    && tar xzf tar --strip-components 1 -C /usr/lib/influxdb3 -xvf "influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
+    && tar --strip-components 1 -C /usr/lib/influxdb3 -xvf "influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
     && mv /usr/lib/influxdb3/influxdb3 /usr/bin/influxdb3 \
     && rm -rf "influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
         "influxdb3-enterprise-${INFLUXDB_VERSION}"
