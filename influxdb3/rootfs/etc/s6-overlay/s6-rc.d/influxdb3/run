@@ -4,13 +4,13 @@
 # Home Assistant Add-on: InfluxDB3
 # Runs the InfluxDB3 Server
 # ==============================================================================
-export INFLUXDB3_ENTERPRISE_LICENSE_EMAIL
-export INFLUXDB3_ENTERPRISE_LICENSE_TYPE
-export INFLUXDB3_ENTERPRISE_CLUSTER_ID
-export INFLUXDB3_NODE_IDENTIFIER_PREFIX
-export INFLUXDB3_OBJECT_STORE
-export INFLUXDB3_DB_DIR
-export LOG_FILTER
+export INFLUXDB3_ENTERPRISE_LICENSE_EMAIL=$(bashio::config 'license_email')
+export INFLUXDB3_ENTERPRISE_LICENSE_TYPE=home
+export INFLUXDB3_ENTERPRISE_CLUSTER_ID=cluster0
+export INFLUXDB3_NODE_IDENTIFIER_PREFIX=my-node
+export INFLUXDB3_OBJECT_STORE=file
+export INFLUXDB3_DB_DIR=/data/influxdb3
+export LOG_FILTER=info
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")
