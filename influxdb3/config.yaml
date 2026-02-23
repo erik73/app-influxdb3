@@ -33,6 +33,7 @@ options:
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   influxd_log_level: list(debug|info|warn|error)?
+  license_email: match(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)
   reporting: bool
   ssl: bool
   certfile: str
