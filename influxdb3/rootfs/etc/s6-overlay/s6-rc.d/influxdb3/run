@@ -10,7 +10,7 @@ export INFLUXDB3_ENTERPRISE_CLUSTER_ID=cluster0
 export INFLUXDB3_NODE_IDENTIFIER_PREFIX=my-node
 export INFLUXDB3_OBJECT_STORE=file
 export INFLUXDB3_DB_DIR=/data/influxdb3
-export LOG_FILTER=info
+export LOG_FILTER=$(bashio::config 'influxd_log_level')
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")
@@ -18,10 +18,6 @@ for envvar in $(bashio::config 'envvars|keys'); do
     bashio::log.debug "Setting Env Variable ${name} to ${value}"
     export "${name}=${value}"
 done
-
-
-influxd_log_level=$(bashio::config 'influxd_log_level')
-bashio::log.info "influxd_log_level = ${influxd_log_level}"
 
 bashio::log.info 'Starting InfluxDB v3.x...'
 
