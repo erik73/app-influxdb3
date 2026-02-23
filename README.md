@@ -47,7 +47,7 @@ SOFTWARE.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/erik73/app-3.svg
+[commits-shield]: https://img.shields.io/github/commit-activity/y/erik73/app-influxdb3.svg
 [commits]: https://github.com/erik73/app-influxdb3/commits/main
 [github-actions-shield]: https://github.com/erik73/app-influxdb3/workflows/CI/badge.svg
 [github-actions]: https://github.com/erik73/app-influxdb3/actions
