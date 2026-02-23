@@ -19,9 +19,9 @@ map:
   - share:rw
   - ssl
 ports:
-  8086/tcp: 8086
+  8181/tcp: 8181
 ports_description:
-  8086/tcp: InfluxDB server
+  8181/tcp: InfluxDB server
 options:
   log_level: info
   influxd_log_level: warn
