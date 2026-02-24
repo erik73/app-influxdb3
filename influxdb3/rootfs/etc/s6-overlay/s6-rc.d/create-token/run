@@ -4,6 +4,9 @@
 # Home Assistant Add-on: InfluxDB3
 # Create InfluxDB3 Server admin token and print output to log
 # ==============================================================================
+bashio::net.wait_for 8181
+bashio::log.info "Waiting fo InfluxDB3 to start"
+
 if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "/data/influxdb3/admin-created" ; then
     bashio::log.info "Filen finns. Listar"
     bashio::log.red "$(</data/influxdb3/cluster0/trial_or_home_license)"
