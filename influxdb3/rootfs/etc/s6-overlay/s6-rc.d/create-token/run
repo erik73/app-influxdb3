@@ -8,7 +8,11 @@
 bashio::net.wait_for 8181
 bashio::log.info "Waiting fo InfluxDB3 to start"
 
-if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "/data/influxdb3/admin-created" ; then
-    bashio::log.info "Filen finns. Listar"
-    bashio::log.red "$(</data/influxdb3/cluster0/trial_or_home_license)"
+if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "/data/influxdb3/influx-tokens" ; then
+    bashio::log.info "License file exists, but the admin token is not created"
+    bashio::log.info "Creating the admin token..."
+    influxdb3 create token --admin > /data/influxdb3/influx-tokens
+    bashio::log.red "Admin and API tokens created"
+    bashio::log.red "Save the following information. It will not be shown again"
+    bashio::log.red "$(<//data/influxdb3/influx-tokens)"
 fi
