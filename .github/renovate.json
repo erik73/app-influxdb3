@@ -33,7 +33,7 @@
       "matchStrings": [
         "ARG INFLUXDB_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
       ],
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "versioningTemplate": "loose",
       "depNameTemplate": "influxdata/influxdb"
     },
