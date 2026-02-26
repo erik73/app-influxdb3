@@ -27,6 +27,5 @@ exec influxdb3 serve \
     --plugin-dir /data/influx-plugins \
     --exec-mem-pool-bytes 30% \
     --force-snapshot-mem-threshold 70% \
-    --wal-flush-interval 10s \
     --wal-snapshot-size 100 \
     --parquet-mem-cache-size 10%
