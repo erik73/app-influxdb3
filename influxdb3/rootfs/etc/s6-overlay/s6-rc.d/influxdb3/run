@@ -11,6 +11,7 @@ export INFLUXDB3_NODE_IDENTIFIER_PREFIX=$(bashio::addon.hostname)
 export INFLUXDB3_OBJECT_STORE=file
 export INFLUXDB3_DB_DIR=/data/influxdb3
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
+export INFLUXDB3_MAX_HTTP_REQUEST_SIZE=104857600
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")
