@@ -14,7 +14,7 @@ ARG BUILD_REPOSITORY
 ARG BUILD_VERSION
 
 # Setup base system
-ARG INFLUXDB_VERSION="3.8.2"
+ARG INFLUXDB_VERSION="3.8.3"
 
 RUN ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
