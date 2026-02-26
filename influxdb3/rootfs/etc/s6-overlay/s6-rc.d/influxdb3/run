@@ -22,4 +22,12 @@ done
 bashio::log.info 'Starting InfluxDB v3.x...'
 
 # Run InfluxDB
-exec influxdb3 serve --mode all --plugin-dir /data/influx-plugins --exec-mem-pool-bytes 60% --force-snapshot-mem-threshold 70% --wal-flush-interval 10s --wal-snapshot-size 100 --parquet-mem-cache-size 10%
+influxdb3 serve \
+exec influxdb3 serve \
+    --mode all \
+    --plugin-dir /data/influx-plugins \
+    --exec-mem-pool-bytes 30% \
+    --force-snapshot-mem-threshold 70% \
+    --wal-flush-interval 10s \
+    --wal-snapshot-size 100 \
+    --parquet-mem-cache-size 10%
