@@ -26,6 +26,7 @@ options:
   ssl: false
   certfile: fullchain.pem
   keyfile: privkey.pem
+  show_api_keys: false
   envvars: []
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
@@ -35,6 +36,7 @@ schema:
   ssl: bool
   certfile: str
   keyfile: str
+  show_api_keys: bool
   envvars:
     - name: match(^INFLUXD_([A-Z0-9_])+$)
       value: str
