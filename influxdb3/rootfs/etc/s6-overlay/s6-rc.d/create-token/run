@@ -8,6 +8,11 @@
 bashio::net.wait_for 8181
 bashio::log.info "Waiting fo InfluxDB3 to start"
 
+if bashio::config.true "show_api_keys" && bashio::fs.file_exists "/data/influx-tokens"; then
+    bashio::log.info "Here are your API keys"
+    bashio::log.red "$(<//data/influx-tokens)"
+fi
+
 if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "/data/influx-tokens" ; then
     bashio::log.info "License file exists, but the admin token is not created"
     bashio::log.info "Creating the admin token..."
