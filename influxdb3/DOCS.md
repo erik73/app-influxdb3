@@ -5,9 +5,12 @@ It's useful for recording metrics, sensor data, events,
 and performing analytics. It exposes an HTTP API for client interaction and is
 often used in combination with Grafana to visualize the data.
 
-This app runs the InfluxDB v2.x build channel. \
-For InfluxDB v1.x build channel, remove this app and install
-https://github.com/hassio-addons/addon-influxdb
+This app runs the InfluxDB3.x build channel.
+
+Important: This app requires a free license from InfluxData. 
+It is required that you provide your email address in the app configuration,
+and once the app it started, you will get an email where you can activate
+your license. It is free as long as it is for home use.
 
 ![Supports aarch64 Architecture][aarch64-shield] ![Supports amd64 Architecture][amd64-shield]
 
@@ -16,38 +19,42 @@ https://github.com/hassio-addons/addon-influxdb
 Follow these steps to get the app installed on your system:
 
 Add the repository `https://github.com/erik73/hassio-addons`.
-Find the "3" app and click it.
+Find the "InfluxDB3" app and click it.
 Click on the "INSTALL" button.
 
 ## First Run
 
-Make sure, that the required port `8086` is not in use by another app
-(e.g. official InfluxDB1) or just alter it to another port.
-Use for example `8087`. You can just change the post in the app configurations.
+Make sure, that the required port `8181` is not in use by another app
+It is also possible to alter it to another port in the configuration.
 
-![](../images/config1.jpg)
+Please read above regarding the requirement for a license.
+When the app is started fore the first time, it will generate an 
+automated license request to InfluxData, and the app will wait for you
+to activate it via the activation link you recieve on your provided email
+account. Once you click the activaton link, InfluxDB3 will start.
 
-After the app has been started, please navigate to it's landing page by replacing
-the ip and the port in the following URL:
-http://192.168.1.x:8087
+Please save the `Token` and the `HTTP Requests Header` since you will
+need them later in your homeassistant configuration, and for data migration.
 
-On the first run, you have to fill in a `Username`, `Password`,
-`Organization Name` and `Bucket Name`.
-![](../images/setup1.jpg)
+## Administrative Access
 
-If you are presented with an `API-Token` please note it down,
-you will need it later in your homeassistant configuration
-![](../images/setup2.jpg)
+There is no GUI provided with InfluxDB3. To create you database, you need
+to install InfluxDB 3 Explorer. I used docker desktop on my Windows desktop
+computer and installed it with the following command line input:
+
+```yaml
+docker run --detach --name influxdb3-explorer --publish 8888:80 influxdata/influxdb3-ui:latest --mode=admin
+```
+
+Point your broser to `http://localhost:8888/` to connect to the admin interface.
+
 
 ## Configuration
 
-Adding the following snippets to your `secrets.yaml` and alter it on your needs.
-Your ORG-ID can be obtained by reading it from your URL:
-(http://<your_homeassistant_ip>/orgs/\<ORGID\>)
+Adding the following to your `secrets.yaml` and alter it on your needs.
 
 ```yaml
-influx_apiToken: <your API-Token>
-influx_orgID: <Your ORG-ID>
+influx_token: <your Token>
 ```
 
 Adding the following snippet to your `configuration.yaml` and alter it
@@ -58,14 +65,15 @@ please restart Homeassistant to take affect of your changes
 ```yaml
 #InfluxDB3
 influxdb:
-  host: localhost
-  port: 8087
+  host: 32b8266a-influxdb3
+  port: 8181
   api_version: 2
   max_retries: 3
   default_measurement: state
-  token: !secret influx_apiToken
-  organization: !secret influx_orgID
-  bucket: home_assistant
+  token: !secret influx_token
+  # Required, but not validated
+  organization: d1c92e4eef98a5b6
+  bucket: <Your database name, for example HomeAssistant>
   ssl: false
   verify_ssl: false
   ignore_attributes:
@@ -241,5 +249,5 @@ You could [open an issue here][issue] GitHub.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[issue]: https://github.com/erik73/app-influxdb2/issues
+[issue]: https://github.com/erik73/app-influxdb3/issues
 [repository]: https://github.com/erik73/hassio-addons

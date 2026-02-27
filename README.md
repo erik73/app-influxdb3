@@ -13,7 +13,7 @@ InfluxDB for app for HomeAssistant
 
 ## About
 
-This app is provides InfluxDB version 2
+This app is provides InfluxDB3
 
 ## Support
 
