@@ -23,10 +23,10 @@ bashio::log.info 'Starting InfluxDB v3.x...'
 
 # Run InfluxDB
 exec influxdb3 serve \
-    --node-id node0
-    --cluster-id cluster0
-    --object-store file
-    --data-dir /data/influxdb3
+    --node-id node0 \
+    --cluster-id cluster0 \
+    --object-store file \
+    --data-dir /data/influxdb3 \
     --plugin-dir /data/influx-plugins \
     --exec-mem-pool-bytes 30% \
     --force-snapshot-mem-threshold 70% \
