@@ -6,12 +6,11 @@
 # ==============================================================================
 export INFLUXDB3_ENTERPRISE_LICENSE_EMAIL=$(bashio::config 'license_email')
 export INFLUXDB3_ENTERPRISE_LICENSE_TYPE=home
-export INFLUXDB3_ENTERPRISE_CLUSTER_ID=cluster0
-export INFLUXDB3_NODE_IDENTIFIER_PREFIX=$(bashio::addon.hostname)
-export INFLUXDB3_OBJECT_STORE=file
-export INFLUXDB3_DB_DIR=/data/influxdb3
+# export INFLUXDB3_ENTERPRISE_CLUSTER_ID=cluster0
+# export INFLUXDB3_NODE_IDENTIFIER_PREFIX=$(bashio::addon.hostname)
+# export INFLUXDB3_OBJECT_STORE=file
+#export INFLUXDB3_DB_DIR=/data/influxdb3
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
-export INFLUXDB3_MAX_HTTP_REQUEST_SIZE=104857600
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")
@@ -24,7 +23,10 @@ bashio::log.info 'Starting InfluxDB v3.x...'
 
 # Run InfluxDB
 exec influxdb3 serve \
-    --mode all \
+    --node-id node0
+    --cluster-id cluster0
+    --object-store file
+    --data-dir /data/influxdb3
     --plugin-dir /data/influx-plugins \
     --exec-mem-pool-bytes 30% \
     --force-snapshot-mem-threshold 70% \
