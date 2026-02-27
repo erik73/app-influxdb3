@@ -7,7 +7,7 @@ often used in combination with Grafana to visualize the data.
 
 This app runs the InfluxDB3.x build channel.
 
-Important: This app requires a free license from InfluxData. 
+Important: This app requires a free license from InfluxData.
 It is required that you provide your email address in the app configuration,
 and once the app it started, you will get an email where you can activate
 your license. It is free as long as it is for home use.
@@ -28,7 +28,7 @@ Make sure, that the required port `8181` is not in use by another app
 It is also possible to alter it to another port in the configuration.
 
 Please read above regarding the requirement for a license.
-When the app is started fore the first time, it will generate an 
+When the app is started fore the first time, it will generate an
 automated license request to InfluxData, and the app will wait for you
 to activate it via the activation link you recieve on your provided email
 account. Once you click the activaton link, InfluxDB3 will start.
@@ -47,7 +47,6 @@ docker run --detach --name influxdb3-explorer --publish 8888:80 influxdata/influ
 ```
 
 Point your broser to `http://localhost:8888/` to connect to the admin interface.
-
 
 ## Configuration
 
