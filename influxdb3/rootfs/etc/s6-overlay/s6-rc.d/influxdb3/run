@@ -27,8 +27,4 @@ exec influxdb3 serve \
     --cluster-id cluster0 \
     --object-store file \
     --data-dir /data/influxdb3 \
-    --plugin-dir /data/influx-plugins \
-    --exec-mem-pool-bytes 30% \
-    --force-snapshot-mem-threshold 70% \
-    --wal-snapshot-size 100 \
-    --parquet-mem-cache-size 10%
+    --plugin-dir /data/influx-plugins
