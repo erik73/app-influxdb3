@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Add-on: InfluxDB3
+# Home Assistant App: InfluxDB3
 # Create InfluxDB3 Server admin token and print output to log
 # ==============================================================================
 
