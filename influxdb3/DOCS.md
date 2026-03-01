@@ -169,8 +169,8 @@ The import config above will import the °C and % measurements.
 Save the file, for example call it data.json
 Call the API via curl:
 curl -X POST -H "Content-Type: application/json" -d @data.json \
-    http://<your_influxdb3_ip_address>:8181/api/v3/engine/import?action=start \
-    --header "Authorization: Bearer <your influxdb3_api_token>"
+ http://<your_influxdb3_ip_address>:8181/api/v3/engine/import?action=start \
+ --header "Authorization: Bearer <your influxdb3_api_token>"
 
 Important: Do not try to import an entire database. The importer/InfluxDB3 will
 crash. Take on or two measurements at a time, and limit to a few months as above.
