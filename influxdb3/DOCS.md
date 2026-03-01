@@ -55,7 +55,7 @@ Folow this link for more information: https://docs.influxdata.com/influxdb3/expl
 
 Start the influxdb3-explorer container.
 Point your broser to `http://localhost:8888/` to connect to the admin interface.
-You will need your token to connect, and point the Explorer to 
+You will need your token to connect, and point the Explorer to
 <your_influxdb2_ip_address>:8181
 
 ## HomeAssistant Configuration
@@ -83,7 +83,7 @@ influxdb:
   token: !secret influx_token
   # Required, but not validated
   organization: d1c92e4eef98a5b6
-  # The database will be created automatically 
+  # The database will be created automatically
   bucket: <Your database name, for example HomeAssistant>
   ssl: false
   verify_ssl: false
