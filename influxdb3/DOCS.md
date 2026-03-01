@@ -167,10 +167,10 @@ data from an InfluxDB2 instance to InfluxDB3:
 }
 ```
 
-
 The import config above will import the °C and % measurements.
 Save the file, for example call it data.json
 Call the API via curl:
+
 ```bash
 curl -X POST -H "Content-Type: application/json" -d @data.json \
     http://<your_influxdb3_ip_address>:8181/api/v3/engine/import?action=start \
