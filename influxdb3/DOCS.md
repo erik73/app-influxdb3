@@ -34,6 +34,7 @@ When the app is started fore the first time, it will generate an
 automated license request to InfluxData, and the app will wait for you
 to activate it via the activation link you recieve on your provided email
 account. Once you click the activaton link, InfluxDB3 will start.
+The email will say "trial license", but it is an at-home license.
 
 Please save the `Token` and the `HTTP Requests Header` since you will
 need them later in your homeassistant configuration, and for data migration.
