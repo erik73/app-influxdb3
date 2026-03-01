@@ -9,7 +9,8 @@
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
-InfluxDB for app for HomeAssistant
+InfluxDB3 enterprise for app for HomeAssistant.
+Can be used with a free "at-home" license.
 
 ## About
 
