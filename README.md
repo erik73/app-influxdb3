@@ -9,12 +9,13 @@
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
-InfluxDB3 enterprise for app for HomeAssistant.
-Can be used with a free "at-home" license.
+InfluxDB3 enterprise app for HomeAssistant.
+Requires an At-Home license. 
 
 ## About
 
-This app is provides InfluxDB3 Enterprise with a free "at-home" license.
+This app provides InfluxDB3 Enterprise and requires an At-home license.
+The license will be requsted from InfluxData, and sent to the email address you provide in the app configuration.
 
 ## Support
 
