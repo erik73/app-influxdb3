@@ -14,7 +14,7 @@ Requires an At-Home license.
 
 ## About
 
-This app provides InfluxDB3 Enterprise and requires an At-home license.
+This app provides InfluxDB3 Enterprise and requires an At-home license. It is free for At-Home use.
 The license will be requsted from InfluxData, and sent to the email address you provide in the app configuration.
 
 ## Support
