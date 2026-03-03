@@ -10,7 +10,7 @@
 [![GitHub Activity][commits-shield]][commits]
 
 InfluxDB3 enterprise app for HomeAssistant.
-Requires an At-Home license. 
+Requires an At-Home license.
 
 ## About
 
