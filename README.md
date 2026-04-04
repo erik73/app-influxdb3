@@ -37,4 +37,4 @@ Read the Software License Terms in the activation email before accepting the lic
 [github-actions]: https://github.com/erik73/app-influxdb3/actions
 [issue]: https://github.com/erik73/app-influxdb3/issues
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
-[project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
+[project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
