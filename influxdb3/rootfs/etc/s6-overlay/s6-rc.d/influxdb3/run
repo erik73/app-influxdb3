@@ -4,9 +4,18 @@
 # Home Assistant App: InfluxDB3
 # Runs the InfluxDB3 Server
 # ==============================================================================
+bashio::log.info "Configuring environment variables for InfluxDB3"
+
 export INFLUXDB3_ENTERPRISE_LICENSE_EMAIL=$(bashio::config 'license_email')
 export INFLUXDB3_ENTERPRISE_LICENSE_TYPE=home
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
+
+if ! bashio::fs.file_exists "/data/session_secret" ; then
+    bashio::log.info "Generating new session secret key..."
+    openssl rand -hex 32 > /data/session_secret
+fi
+
+export INFLUXDB3_WEBUI_SESSION_SECRET="$(< /data/session_secret)"
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")
