@@ -9,6 +9,7 @@ bashio::log.info "Configuring environment variables for InfluxDB3"
 export INFLUXDB3_LICENSE_EMAIL=$(bashio::config 'license_email')
 export INFLUXDB3_LICENSE_TYPE=home
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
+export INFLUXDB3_HTTP_BIND_ADDR=[::]:8181
 
 if ! bashio::fs.file_exists "/data/session_secret" ; then
     bashio::log.info "Generating new session secret key..."
