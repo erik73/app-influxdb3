@@ -6,8 +6,8 @@
 # ==============================================================================
 bashio::log.info "Configuring environment variables for InfluxDB3"
 
-export INFLUXDB3_ENTERPRISE_LICENSE_EMAIL=$(bashio::config 'license_email')
-export INFLUXDB3_ENTERPRISE_LICENSE_TYPE=home
+export INFLUXDB3_LICENSE_EMAIL=$(bashio::config 'license_email')
+export INFLUXDB3_LICENSE_TYPE=home
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
 
 if ! bashio::fs.file_exists "/data/session_secret" ; then
@@ -33,4 +33,5 @@ exec influxdb3 serve \
     --object-store file \
     --data-dir /data/influxdb3 \
     --plugin-dir /data/influx-plugins \
+    --async-trigger-concurrency-limit 8 \
     --mode all,webui
