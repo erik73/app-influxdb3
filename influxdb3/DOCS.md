@@ -43,7 +43,7 @@ need them later in your homeassistant configuration, and for data migration.
 
 ## Administrative Access
 
-Since the release of InfluxDB3 version 3.11 (app version 1.0), the 
+Since the release of InfluxDB3 version 3.11 (app version 1.0), the
 InfluxDB3 Explorer is included in this app. Click the "Open Web UI"
 button to bring up InfluxDB 3 Explorer.
 
@@ -60,7 +60,7 @@ The upgraded storage engine is now the default (InfluxDB3 3.11+).
 New installs default to the upgraded storage engine, called "Pacha Tree".
 Installs prior to app version 1.0 will continue running the old Parquet
 engine. To upgrade your existing install to the new storage engine,
-set the environment variable INFLUXDB3_UPGRADE_PACHA_TREE. 
+set the environment variable INFLUXDB3_UPGRADE_PACHA_TREE.
 
 ## HomeAssistant Configuration
 
