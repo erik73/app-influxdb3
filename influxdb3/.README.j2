@@ -10,10 +10,6 @@ It's useful for recording metrics, sensor data, events,
 and performing analytics. It exposes an HTTP API for client interaction and if
 often used in combination with Grafana to visualize the data.
 
-Management of InfluxDB3 has to be performed using the InfluxDB 3 Exlorer.
-It can be downloaded as a docker container, and installed in for example
-Docker Desktop on your computer.
-
 # InfluxData At-Home License
 
 To be able to use this software you have to provide your email address in app configuration.
