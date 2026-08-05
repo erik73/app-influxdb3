@@ -16,7 +16,9 @@ ARG BUILD_VERSION
 # Setup base system
 ARG INFLUXDB_VERSION="3.11.0"
 
-RUN ARCH="${BUILD_ARCH}" \
+RUN apk add --no-cache \
+        nginx \
+    &&ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     && mkdir -p /var/lib/influxdb3 \

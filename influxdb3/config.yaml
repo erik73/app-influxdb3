@@ -17,7 +17,8 @@ init: false
 map:
   - share:rw
   - ssl
-webui: http://[HOST]:[PORT:8181]
+ingress: true
+ingress_port: 1337
 ports:
   8181/tcp: 8181
 ports_description:
