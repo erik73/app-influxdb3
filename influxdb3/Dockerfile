@@ -16,10 +16,7 @@ ARG BUILD_VERSION
 # Setup base system
 ARG INFLUXDB_VERSION="3.11.0"
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        nginx=1.26.3-3+deb13u7 \
-    &&ARCH="${BUILD_ARCH}" \
+RUN ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     && mkdir -p /var/lib/influxdb3 \
@@ -28,11 +25,7 @@ RUN apt-get update \
     && tar --strip-components 1 -C /usr/lib/influxdb3 -xvf "influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
     && mv /usr/lib/influxdb3/influxdb3 /usr/bin/influxdb3 \
     && rm -rf "influxdb3-enterprise-${INFLUXDB_VERSION}_linux_${ARCH}.tar.gz" \
-        "influxdb3-enterprise-${INFLUXDB_VERSION}" \
-        /tmp/* \
-        /var/{cache,log}/* \
-        /var/lib/apt/lists/* \
-        /etc/nginx
+        "influxdb3-enterprise-${INFLUXDB_VERSION}"
 
 # Copy root filesystem
 COPY rootfs /
