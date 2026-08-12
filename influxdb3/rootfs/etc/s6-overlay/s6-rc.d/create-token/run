@@ -23,5 +23,5 @@ if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && ! 
 fi
 if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && bashio::fs.file_exists "/data/influx-tokens" ; then
     bashio::log.info "Setting the InfluxDB3 auth token variable"
-    export INFLUXDB3_AUTH_TOKEN=$(grep -m 1 -oE 'apiv3_[a-zA-Z0-9_-]{86}' influx-tokens)
+    export INFLUXDB3_AUTH_TOKEN=$(grep -m 1 -oE 'apiv3_[a-zA-Z0-9_-]{86}' /data/influx-tokens)
 fi
