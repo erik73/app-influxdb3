@@ -132,6 +132,8 @@ influxdb:
 - influxd_log_level : you can set up a separate loglevel for the influxd service.
   thats because the service supports less options as log_level and they are named
   different
+- ssl : If enabled, InfluxDB3 will use the cert and key specified from the /ssl directory.
+  You have to adjust your configuration of the InfluxDB integration accordingly.
 - show_api_keys : If enabled, the Token/key will be shown in the app log when started.
 - ENVVARS : Here you can add any environment variable. The InfluxDB3 server will accept
   almost all configuration option as a variable.
