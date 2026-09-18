@@ -37,8 +37,6 @@ if bashio::config.true 'ssl'; then
         bashio::log.warning "SSL is enabled in config, but certificate file or key is missing in /ssl/!"
         bashio::log.warning "Proceeding without SSL configuration. Server will run insecurely."
     fi
-else
-    bashio::log.warning "SSL is disabled. Running insecurely."
 fi
 
 export INFLUXDB3_WEBUI_SESSION_SECRET="$(< /data/session_secret)"
