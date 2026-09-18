@@ -16,6 +16,31 @@ if ! bashio::fs.file_exists "/data/session_secret" ; then
     openssl rand -hex 32 > /data/session_secret
 fi
 
+# --- SSL/TLS Configuration ---
+if bashio::config.true 'ssl'; then
+    bashio::log.info "SSL is enabled. Configuring certificates..."
+    
+    # Get filename options from the add-on configuration (e.g., "fullchain.pem" and "privkey.pem")
+    CERTFILE=$(bashio::config 'certfile')
+    KEYFILE=$(bashio::config 'keyfile')
+    
+    # Define paths based on Home Assistant's mapped /ssl/ directory
+    TLS_CERT_PATH="/ssl/${CERTFILE}"
+    TLS_KEY_PATH="/ssl/${KEYFILE}"
+
+    # Verify that the certificate files actually exist before exporting them
+    if bashio::fs.file_exists "${TLS_CERT_PATH}" && bashio::fs.file_exists "${TLS_KEY_PATH}"; then
+        export INFLUXDB3_TLS_CERT="${TLS_CERT_PATH}"
+        export INFLUXDB3_TLS_KEY="${TLS_KEY_PATH}"
+        bashio::log.info "SSL certificates verified and successfully configured."
+    else
+        bashio::log.warning "SSL is enabled in config, but certificate file or key is missing in /ssl/!"
+        bashio::log.warning "Proceeding without SSL configuration. Server will run insecurely."
+    fi
+else
+    bashio::log.warning "SSL is disabled. Running insecurely."
+fi
+
 export INFLUXDB3_WEBUI_SESSION_SECRET="$(< /data/session_secret)"
 
 for envvar in $(bashio::config 'envvars|keys'); do
