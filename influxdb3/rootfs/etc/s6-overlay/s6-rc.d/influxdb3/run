@@ -10,6 +10,7 @@ export INFLUXDB3_LICENSE_EMAIL=$(bashio::config 'license_email')
 export INFLUXDB3_LICENSE_TYPE=home
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
 export INFLUXDB3_HTTP_BIND_ADDR=[::]:8181
+export INFLUXDB3_DATA_DIR=/data/influxdb3
 
 if ! bashio::fs.file_exists "/data/session_secret" ; then
     bashio::log.info "Generating new session secret key..."
@@ -55,7 +56,6 @@ exec influxdb3 serve \
     --node-id node0 \
     --cluster-id cluster0 \
     --object-store file \
-    --data-dir /data/influxdb3 \
     --plugin-dir /data/influx-plugins \
     --async-trigger-concurrency-limit 8 \
     --mode all,webui
