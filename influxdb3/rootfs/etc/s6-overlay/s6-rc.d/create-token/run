@@ -5,6 +5,16 @@
 # Create InfluxDB3 Server admin token and print output to log
 # ==============================================================================
 
+# Set default environment variable for DATA directory
+export INFLUXDB3_DATA_DIR=/data/influxdb3
+
+# Export varables set in the app config
+for envvar in $(bashio::config 'envvars|keys'); do
+    name=$(bashio::config "envvars[${envvar}].name")
+    value=$(bashio::config "envvars[${envvar}].value")
+    export "${name}=${value}"
+done
+
 bashio::net.wait_for 8181
 bashio::log.info "Waiting fo InfluxDB3 to start"
 
