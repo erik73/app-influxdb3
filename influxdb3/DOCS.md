@@ -135,6 +135,12 @@ influxdb:
 - show_api_keys : If enabled, the Token/key will be shown in the app log when started.
 - ENVVARS : Here you can add any environment variable. The InfluxDB3 server will accept
   almost all configuration option as a variable.
+  The app first exports its own `INFLUXDB3_*` environment defaults, then exports your
+  `envvars`, so values you set can replace those defaults (for example
+  `INFLUXDB3_DATA_DIR`). It then starts `influxdb3 serve` with explicit command-line
+  options. InfluxDB 3 gives command-line options precedence over equivalent
+  environment variables, so settings supplied on the command line (for example
+  `--node-id` or `--mode`) cannot be overridden through `envvars`.
 
   See the following page for more info: https://docs.influxdata.com/influxdb3/enterprise/reference/config-options/
 
