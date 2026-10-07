@@ -18,20 +18,30 @@ done
 bashio::net.wait_for 8181
 bashio::log.info "Waiting fo InfluxDB3 to start"
 
-if bashio::config.true "show_api_keys" && bashio::fs.file_exists "/data/influx-tokens"; then
-    bashio::log.info "Here are your API keys"
-    bashio::log.red "$(<//data/influx-tokens)"
-fi
-
-if bashio::fs.file_exists "${INFLUXDB3_DATA_DIR}/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "/data/influx-tokens" ; then
+if bashio::var.equals "${INFLUXDB3_DATA_DIR}" "/data/influxdb3"; then
+   if bashio::config.true "show_api_keys" && bashio::fs.file_exists "/data/influx-tokens"; then
+       bashio::log.info "Here are your API keys"
+       bashio::log.red "$(<//data/influx-tokens)"
+   fi
+   if bashio::fs.file_exists "/data/influxdb3/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "/data/influx-tokens" ; then
     bashio::log.info "License file exists, but the admin token is not created"
     bashio::log.info "Creating the admin token..."
     influxdb3 create token --admin > /data/influx-tokens
     bashio::log.red "Admin and API tokens created"
     bashio::log.red "Save the following information. It will not be shown again"
     bashio::log.red "$(<//data/influx-tokens)"
-fi
-if bashio::fs.file_exists "${INFLUXDB3_DATA_DIR}/cluster0/trial_or_home_license" && bashio::fs.file_exists "/data/influx-tokens" ; then
-    bashio::log.info "Setting the InfluxDB3 auth token variable"
-    export INFLUXDB3_AUTH_TOKEN=$(grep -m 1 -oE 'apiv3_[a-zA-Z0-9_-]{86}' /data/influx-tokens)
+   fi
+else
+   if bashio::config.true "show_api_keys" && bashio::fs.file_exists "${INFLUXDB3_DATA_DIR}/influx-tokens"; then
+       bashio::log.info "Here are your API keys"
+       bashio::log.red "$(</${INFLUXDB3_DATA_DIR}/influx-tokens)"
+   fi
+   if bashio::fs.file_exists "${INFLUXDB3_DATA_DIR}/cluster0/trial_or_home_license" && ! bashio::fs.file_exists "${INFLUXDB3_DATA_DIR}/influx-tokens" ; then
+    bashio::log.info "License file exists, but the admin token is not created"
+    bashio::log.info "Creating the admin token..."
+    influxdb3 create token --admin > ${INFLUXDB3_DATA_DIR}/influx-tokens
+    bashio::log.red "Admin and API tokens created"
+    bashio::log.red "Save the following information. It will not be shown again"
+    bashio::log.red "$(</${INFLUXDB3_DATA_DIR}/influx-tokens)"
+   fi
 fi
