@@ -11,11 +11,15 @@ export INFLUXDB3_LICENSE_TYPE=home
 export INFLUXDB3_LOG_FILTER=$(bashio::config 'influxd_log_level')
 export INFLUXDB3_HTTP_BIND_ADDR=[::]:8181
 export INFLUXDB3_DATA_DIR=/data/influxdb3
+export INFLUXDB3_EXEC_MEM_POOL_SIZE=512mb
+export INFLUXDB3_FILE_CACHE_SIZE=384mb
 
 if ! bashio::fs.file_exists "/data/session_secret" ; then
     bashio::log.info "Generating new session secret key..."
     openssl rand -hex 32 > /data/session_secret
 fi
+
+export INFLUXDB3_WEBUI_SESSION_SECRET="$(< /data/session_secret)"
 
 # --- SSL/TLS Configuration ---
 if bashio::config.true 'ssl'; then
@@ -39,8 +43,6 @@ if bashio::config.true 'ssl'; then
         bashio::log.warning "Proceeding without SSL configuration. Server will run insecurely."
     fi
 fi
-
-export INFLUXDB3_WEBUI_SESSION_SECRET="$(< /data/session_secret)"
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")

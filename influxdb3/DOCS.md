@@ -24,6 +24,14 @@ Add the repository `https://github.com/erik73/hassio-addons`.
 Find the "InfluxDB3" app and click it.
 Click on the "INSTALL" button.
 
+## Default resource settings
+
+In this app, the following INFLUXDB3 resource settings are set by default.
+To change these values, you can use the `ENVVARS` option, described
+below, to alter these and many other configuration parameters.
+`INFLUXDB3_EXEC_MEM_POOL_SIZE=512mb`
+`INFLUXDB3_FILE_CACHE_SIZE=384mb`
+
 ## First Run
 
 Make sure that the required port `8181` is not in use by another app.
@@ -143,6 +151,8 @@ influxdb:
   `--node-id` or `--mode`) cannot be overridden through `envvars`.
 
   See the following page for more info: https://docs.influxdata.com/influxdb3/enterprise/reference/config-options/
+
+## Default settings
 
 ## Changelog & Releases
 
