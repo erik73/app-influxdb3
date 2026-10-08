@@ -18,6 +18,7 @@ done
 bashio::net.wait_for 8181
 bashio::log.info "Waiting fo InfluxDB3 to start"
 
+# Configure licensing and create admin token if it does not exist. Handles both standard and custom data directories
 if bashio::var.equals "${INFLUXDB3_DATA_DIR}" "/data/influxdb3"; then
    if bashio::config.true "show_api_keys" && bashio::fs.file_exists "/data/influx-tokens"; then
        bashio::log.info "Here are your API keys"
