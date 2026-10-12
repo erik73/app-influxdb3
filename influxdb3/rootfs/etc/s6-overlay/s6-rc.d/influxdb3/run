@@ -22,7 +22,7 @@ fi
 
 export INFLUXDB3_WEBUI_SESSION_SECRET="$(< /data/session_secret)"
 
-if ! "$(bashio::fs.file_exists "/data/jwt-private-key.pem")" ; then
+if ! bashio::fs.file_exists "/data/jwt-private-key.pem" ; then
     bashio::log.info "Generating JWT private key."
     openssl genrsa -out /data/jwt-private-key.pem 2048
 fi
