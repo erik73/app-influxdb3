@@ -26,6 +26,7 @@ options:
   log_level: info
   influxd_log_level: warn
   reporting: true
+  username_password_auth: false
   ssl: false
   certfile: fullchain.pem
   keyfile: privkey.pem
@@ -36,6 +37,7 @@ schema:
   influxd_log_level: list(debug|info|warn|error)?
   license_email: match(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)
   reporting: bool
+  username_password_auth: bool
   ssl: bool
   certfile: str
   keyfile: str
