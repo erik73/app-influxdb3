@@ -27,12 +27,12 @@ if ! bashio::fs.file_exists "/data/jwt-private-key.pem" ; then
     openssl genrsa -traditional -out /data/jwt-private-key.pem 2048
 fi
 
-if bashio::config.true 'username_password_auth'; then
-    bashio::log.info "Username and password authentication is enabled..."
-    export INFLUXDB3_USER_AUTH_TYPE=basic
-    export INFLUXDB3_JWT_PRIVATE_KEY="$(< /data/jwt-private-key.pem)"
-    export INFLUXDB3_JWT_KEY_ID="HomeAssistant"
-fi
+#if bashio::config.true 'username_password_auth'; then
+#    bashio::log.info "Username and password authentication is enabled..."
+#    export INFLUXDB3_USER_AUTH_TYPE=basic
+#    export INFLUXDB3_JWT_PRIVATE_KEY="$(< /data/jwt-private-key.pem)"
+#    export INFLUXDB3_JWT_KEY_ID="HomeAssistant"
+#fi
 
 # --- SSL/TLS Configuration ---
 if bashio::config.true 'ssl'; then
