@@ -7,6 +7,7 @@ url: https://github.com/erik73/hassio-addons
 panel_icon: mdi:chart-areaspline
 startup: services
 homeassistant: 0.92.0b2
+backup: cold
 ulimits:
   nofile: 65535
 hassio_api: true
