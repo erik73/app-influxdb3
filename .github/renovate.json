@@ -4,7 +4,9 @@
     "helpers:pinGitHubActionDigests"
   ],
   "rebaseWhen": "behind-base-branch",
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "labels": [
     "dependencies",
     "no-stale"
